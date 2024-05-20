@@ -1,0 +1,31 @@
+﻿<Window x:Class="APProjeFrontend.HomeScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:APProjeFrontend"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        WindowStyle="ThreeDBorderWindow"
+        Title="HomeScreen" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <StackPanel Background="LightGray" VerticalAlignment="Stretch">
+            <Button Content="Lobby" Name="LobbyButton" Click="LobbyButton_Click" Height="50" Margin="10"/>
+            <Button Content="Create Game" Name="CreateGameButton" Click="CreateGameButton_Click" Height="50" Margin="10"/>
+            <Button Content="Leadership Table" Name="LeadershipTableButton" Click="LeadershipTableButton_Click" Height="50" Margin="10"/>
+            <Button Content="About" Name="AboutButton" Click="AboutButton_Click" Height="50" Margin="10"/>
+        </StackPanel>
+
+        <!-- Main Content -->
+        <Grid Grid.Column="1" Name="MainContentGrid">
+            <!-- Placeholder for navigation content -->
+            <ContentControl Name="ContentControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </Grid>
+    </Grid>
+</Window>
