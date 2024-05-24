@@ -10,8 +10,8 @@
         Title="Space Battle Shooter Game MOO ICT" Height="920" Width="1500">
     <Canvas Name="MyCanvas" Focusable="True" Background="Black" KeyDown="OnKeyDown" KeyUp="OnKeyUp">
 
-        <Rectangle Name="player" Height="50" Width="60" Fill="Yellow" Canvas.Left="720" Canvas.Top="726" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle Name="player1" Height="50" Width="60" Fill="Yellow" Canvas.Left="20" Canvas.Top="726" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <Rectangle Name="player" Height="50" Width="60" Fill="Yellow" Canvas.Left="115" Canvas.Top="726" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="-9.847,0.162" />
+        <Rectangle Name="player1" Height="50" Width="60" Fill="Yellow" Canvas.Left="690" Canvas.Top="726" HorizontalAlignment="Left" VerticalAlignment="Center" />
         <Rectangle Name="player2" Height="50" Width="60" Fill="Yellow" Canvas.Left="1320" Canvas.Top="726" HorizontalAlignment="Center" VerticalAlignment="Top" />
 
         <Label Name="scoreText" Content="Score: 0" FontSize="18" FontWeight="Bold" Foreground="White" />

@@ -40,6 +40,8 @@ namespace APProjeFrontend
         int enemySpeed = 10;
 
         Rect playerHitBox;
+        Rect player1HitBox;
+        private bool secondplayermoveright;
 
         public MainWindow()
         {
@@ -69,7 +71,7 @@ namespace APProjeFrontend
         private void GameLoop(object sender, EventArgs e)
         {
             playerHitBox = new Rect(Canvas.GetLeft(player), Canvas.GetTop(player), player.Width, player.Height);
-
+            player1HitBox = new Rect(Canvas.GetLeft(player1), Canvas.GetTop(player1), player1.Width, player1.Height);
             enemyCounter -= 1;
 
             scoreText.Content = "Score: " + score;
@@ -84,17 +86,23 @@ namespace APProjeFrontend
             if (moveLeft == true && Canvas.GetLeft(player) > 0)
             {
                 Canvas.SetLeft(player, Canvas.GetLeft(player) - playerSpeed);
+                Canvas.SetLeft(player1, Canvas.GetLeft(player1) - playerSpeed);
             }
             if (moveRight == true && Canvas.GetLeft(player) + 90 < Application.Current.MainWindow.Width)
             {
                 Canvas.SetLeft(player, Canvas.GetLeft(player) + playerSpeed);
+            }
+            if (secondplayermoveright == true && Canvas.GetLeft(player) + 90 < Application.Current.MainWindow.Width)
+            {
+                Canvas.SetLeft(player1, Canvas.GetLeft(player1) + playerSpeed);
+
             }
 
 
 
             foreach (var x in MyCanvas.Children.OfType<Rectangle>())
             {
-                if (x is Rectangle && (string)x.Tag == "bullet")
+                if (x is Rectangle && ((string)x.Tag == "bullet"))
                 {
                     Canvas.SetTop(x, Canvas.GetTop(x) - 20);
 
@@ -175,10 +183,13 @@ namespace APProjeFrontend
             if (e.Key == Key.Left)
             {
                 moveLeft = true;
+
+
             }
             if (e.Key == Key.Right)
             {
                 moveRight = true;
+                secondplayermoveright = true;
             }
 
         }
@@ -192,6 +203,7 @@ namespace APProjeFrontend
             if (e.Key == Key.Right)
             {
                 moveRight = false;
+                secondplayermoveright = false;
             }
 
             if (e.Key == Key.Space)
@@ -205,11 +217,24 @@ namespace APProjeFrontend
                     Stroke = Brushes.Red
 
                 };
+                Rectangle newBullet1 = new Rectangle
+                {
+                    Tag = "bullet",
+                    Height = 20,
+                    Width = 5,
+                    Fill = Brushes.White,
+                    Stroke = Brushes.Red
+
+                };
 
                 Canvas.SetLeft(newBullet, Canvas.GetLeft(player) + player.Width / 2);
                 Canvas.SetTop(newBullet, Canvas.GetTop(player) - newBullet.Height);
+                Canvas.SetLeft(newBullet1, Canvas.GetLeft(player1) + player1.Width / 2);
+                Canvas.SetTop(newBullet1, Canvas.GetTop(player1) - newBullet1.Height);
 
                 MyCanvas.Children.Add(newBullet);
+                MyCanvas.Children.Add(newBullet1);
+
 
             }
         }
